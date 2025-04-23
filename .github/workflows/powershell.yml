@@ -7,12 +7,10 @@
 # For more information on PSScriptAnalyzer in general, see
 # https://github.com/PowerShell/PSScriptAnalyzer
 
-name: PSScriptAnalyzer
+name: Push to PS Gallery
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
   schedule:
     - cron: '35 15 * * 0'
@@ -53,5 +51,4 @@ jobs:
           NUGET_KEY: ${{ secrets.PS_GALLERY_TOKEN }}
         shell: pwsh
         run: |
-          ./build.ps1 -Path /tmp/samplemodule
-          Publish-Module -Path /tmp/samplemodule -NuGetApiKey $env:NUGET_KEY -Verbose
+          Publish-Module -Name UMN-AAP -NuGetApiKey $env:NUGET_KEY -Verbose
