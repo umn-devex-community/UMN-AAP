@@ -51,4 +51,4 @@ jobs:
           NUGET_KEY: ${{ secrets.PS_GALLERY_TOKEN }}
         shell: pwsh
         run: |
-          Publish-Module -Name UMN-AAP -NuGetApiKey $env:NUGET_KEY -Verbose
+          Publish-Module -Path ".\" -NuGetApiKey $env:NUGET_KEY -Verbose
